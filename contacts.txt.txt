@@ -1,0 +1,5 @@
+Jack,Chen,22,Male,San Francisco,415-412-212
+Jen,Doe,45,Female,San Jose,408-367-3412
+Simon,Wong,32,Male,Los Angeles,213-321-2346
+Peter,Chan,12,Male,Irvine,714-542-1235
+Cindy,Lim,54,Female,Dallas,469-752-7931
