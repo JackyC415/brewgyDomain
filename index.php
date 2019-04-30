@@ -11,31 +11,32 @@
   <meta charset="utf-8">
   <title>Home Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="website logo" href="images/brewgy.png">
-  <link href="https://fonts.googleapis.com/css?family=Muli%7CRoboto:400,300,500,700,900" rel="stylesheet"></head>
+  <link rel="stylesheet" href="css/indexCSS.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli%7CRoboto:400,300,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 
   <body>
-    <div class="main-nav">
-        <ul class="nav">
-          <li><a href="index.php">Home</a></li>
-          <li><a href="About.php" target="_blank">About</a></li>
-          <li><a href="Products.php" target="_blank">Products</a></li>
-          <li><a href="News.php" target="_blank">News</a></li>
-          <li><a href="Contacts.php" target="_blank">Contacts</a></li>
-          <li><a href="register.php" target="_blank">Registration</a></li>
-          <li><a href="user.php" target="_blank">User</a></li>
-        </ul>
+    <div class="w3-top">
+        <div class="w3-bar w3-blue w3-card" id="myNavbar">
+          <a href="index.php" class="w3-bar-item w3-button w3-wide">Home</a>
+          <a href="about.php" target="_blank" class="w3-bar-item w3-button w3-wide">About</a>
+          <a href="product.php" target="_blank" class="w3-bar-item w3-button w3-wide">Product</a>
+          <a href="news.php" target="_blank" class="w3-bar-item w3-button w3-wide">News</a>
+          <a href="contact.php" target="_blank" class="w3-bar-item w3-button w3-wide">Contact</a>
+          <a href="register.php" target="_blank" class="w3-bar-item w3-button w3-wide">Registration</a>
+          <a href="user.php" target="_blank" class="w3-bar-item w3-button w3-wide">User</a>
+          <a href="npiValidation.php" target="_blank" class="w3-bar-item w3-button w3-wide">NPI</a>
+         </div>
     </div>
 
     <header>
-      <img src="images/kitty.png" alt="Jack Chen" class="profile-image">
+      <img src="images/Brewgy.png" alt="Jack Chen" class="profile-image">
       <h1 class="tag name">Hello, I’m Jack.</h1>
       <p class="tag location">Welcome To My Portfolio!</p>
     </header>
 
             <h1>Recent Projects<br /></h1>
-
               <section class="tiles">
                 <article class="style1">
                   <span class="image">

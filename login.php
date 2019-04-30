@@ -1,11 +1,9 @@
 <?php 	
-	session_start();
 	require_once('dbConnection.php');
 
 	//escape string to prevent SQL injection
 	$username = mysqli_real_escape_string($conn, $_POST['username']);
 	$password = mysqli_real_escape_string($conn, md5($_POST['password']));
-	$_SESSION['failed'] = "Login Failed. Please try again!";
 
 	//check for submit button press, then query to validate user info
 	if (isset($_POST['login'])) {
@@ -14,10 +12,14 @@
 
 	//checks for user existence in database
 		if(mysqli_fetch_assoc($authQuery) || $username == ('admin')) {
-			header('Location: welcome.php');
-			die();
+			session_start();
+			$_SESSION['loggedin'] = TRUE;
+			$_SESSION['name'] = $_POST['user_username'];
+			header("Location: welcome.php?login=success");
+			exit();
 		} else {
-		echo $_SESSION['failed'];
+		header("Location: login.php?login=failed");
+		exit();
 		}
 	} 
 	mysqli_close($conn);
@@ -28,7 +30,7 @@
 	<title>Login</title>
 </head>
 <body>
-	<h1>Login Page</h1>
+	<h1>Sign in</h1>
 	<form method = "post" action = "login.php">
 	Username: <input type="username" placeholder="Enter username" name="username" required><br>
 	Password: <input type="password" placeholder="Enter password" name="password" required><br>

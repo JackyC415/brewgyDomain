@@ -2,7 +2,7 @@
 <!--Copyright 2013-2019 Colorlib - All Rights Reserved.-->
 <html lang="en">
 <head>
-	<title>Contacts</title>
+	<title>Contact</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="images/main.css">
@@ -17,7 +17,7 @@
 			</div>
 
 			<form class="contact1-form validate-form">
-				 <p class="tag location">Contact Us</p>
+				 <p class="tag location">Contact Me</p>
 
 				<div class="wrap-input1 validate-input" data-validate = "Name is required">
 					<input class="input1" type="text" name="name" placeholder="Name">

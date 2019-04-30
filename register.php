@@ -11,7 +11,7 @@
 	//function to display failed registration message
 	function invalidRegistration() {
 		session_start();
-		$_SESSION['failed'] = "Registeration Failed. Please try again!";
+		$_SESSION['failed'] = "User Already Exists!";
 		echo $_SESSION['failed'];
 	}
 
@@ -43,15 +43,25 @@
 	<title>Registration Form</title>
 </head>
 <body>
-	<h1>Register Account</h1>
+	<h1>Create account</h1>
 	<form method = "post" action = "register.php"> 
-    Name: <input type="text" placeholder="Enter name" name="name" required><br>
-	Email: <input type="text" placeholder="Enter email" name="email" required><br>
-	Username: <input type="username" placeholder="Enter username" name="username" required><br>
-	Password: <input type="password" placeholder="Enter password" name="password" required><br>
-	Repeat-Password: <input type="password" placeholder="Enter password" name="confirmpass" required><br>
+    Your Name: <input type="text" placeholder="Your name" name="name" pattern="[A-Za-z]{1,32}" required><br>
+	Email: <input type="email" placeholder="example@gmail.com" name="email" required><br>
+	Username: <input type="username" placeholder="Your username" maxlength="15" name="username" required><br>
+	Password: <input type="password" placeholder="At least 6 characters" minlength="6" maxlength="16" name="password" id="password" required><br>
+	Re-enter password: <input type="password" placeholder="Repeat password" maxlength="16" name="confirmpass" oninput="check(this)" required><br>
 	<input type="submit" name="submit"></button><br>
-	Already A Member? <a href="login.php">Login</a>.
+	<p>Already have an account? <a href="login.php">Sign in</a></p>
 	</form>
+	<script language="javascript" type="text/javascript">
+		function check(input) {
+        if (input.value != document.getElementById('password').value) {
+            input.setCustomValidity('Password Must be Matching.');
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+        }
+    }
+	</script>
 </body>
 </html>
