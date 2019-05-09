@@ -3,7 +3,7 @@
 
 	//create user table that contains user first/last name, email, home address, & home/cell phone number
 	try {
-	$userTable = "CREATE TABLE user (uid int(10) AUTO_INCREMENT PRIMARY KEY, user_firstname VARCHAR(100) NOT NULL, user_lastname VARCHAR(100) NOT NULL, user_email VARCHAR(100) NOT NULL UNIQUE, user_homeaddress VARCHAR(100) NOT NULL, user_homephone VARCHAR(100) NOT NULL, user_cellphone VARCHAR(100) NOT NULL UNIQUE)";
+	$userTable = "CREATE TABLE user (uid int(8) AUTO_INCREMENT PRIMARY KEY, user_firstname VARCHAR(50) NOT NULL, user_lastname VARCHAR(50) NOT NULL, user_email VARCHAR(50) NOT NULL UNIQUE, user_homeaddress VARCHAR(50) NOT NULL, user_homephone VARCHAR(50) NOT NULL, user_cellphone VARCHAR(50) NOT NULL UNIQUE)";
 		mysqli_query($conn, $userTable);
 	} catch(Exception $e) {
 		$e->getMessage();

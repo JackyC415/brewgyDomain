@@ -1,6 +1,7 @@
 <?php 
   require_once "setCookie.php";
   setCookieOnPage('BrewgyXVIX');
+  mostVisitedProducts("images/droneImages/drone9.jpg");
 ?>
 <!DOCTYPE html>
 <html>

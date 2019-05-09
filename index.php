@@ -27,6 +27,7 @@
           <a href="register.php" target="_blank" class="w3-bar-item w3-button w3-wide">Registration</a>
           <a href="user.php" target="_blank" class="w3-bar-item w3-button w3-wide">User</a>
           <a href="npiValidation.php" target="_blank" class="w3-bar-item w3-button w3-wide">NPI</a>
+          <a href="marketProduct.php" target="_blank" class="w3-bar-item w3-button w3-wide">Market</a>
          </div>
     </div>
 
@@ -39,6 +40,7 @@
             <h1>Recent Projects<br /></h1>
               <section class="tiles">
                 <article class="style1">
+                  
                   <span class="image">
                     <img src="images/pic01.jpg" alt="" />
                   </span>
@@ -53,10 +55,10 @@
                   <span class="image">
                     <img src="images/pic02.jpg" alt="" />
                   </span>
-                  <a href="#">
-                    <h2>TBD</h2>
+                  <a href="productMarketPlace.php">
+                    <h2>MarketPlace</h2>
                     <div class="content">
-                      <p>Not Available Yet.</p>
+                      <p>Products Market Place</p>
                     </div>
                   </a>
                 </article>

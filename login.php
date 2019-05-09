@@ -1,28 +1,21 @@
 <?php 	
 	require_once('dbConnection.php');
+	session_start();
 
-	//escape string to prevent SQL injection
+	if (isset($_POST['login'])) {
 	$username = mysqli_real_escape_string($conn, $_POST['username']);
 	$password = mysqli_real_escape_string($conn, md5($_POST['password']));
+	$authQuery = mysqli_query($conn, "SELECT id FROM register WHERE user_username='$username' AND user_password='$password'");
 
-	//check for submit button press, then query to validate user info
-	if (isset($_POST['login'])) {
-	
-	$authQuery = mysqli_query($conn, "SELECT * FROM register WHERE user_username='$username' AND user_password='$password'");
-
-	//checks for user existence in database
-		if(mysqli_fetch_assoc($authQuery) || $username == ('admin')) {
-			session_start();
+		if(mysqli_fetch_assoc($authQuery)) {
 			$_SESSION['loggedin'] = TRUE;
-			$_SESSION['name'] = $_POST['user_username'];
-			header("Location: welcome.php?login=success");
-			exit();
+			$_SESSION['name'] = $username;
+			header("Location: addCard.php?login=success");
 		} else {
 		header("Location: login.php?login=failed");
 		exit();
 		}
-	} 
-	mysqli_close($conn);
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,9 +25,10 @@
 <body>
 	<h1>Sign in</h1>
 	<form method = "post" action = "login.php">
-	Username: <input type="username" placeholder="Enter username" name="username" required><br>
-	Password: <input type="password" placeholder="Enter password" name="password" required><br>
+	Username: <input type="username" placeholder="Enter username" name="username" maxlength="15" required><br>
+	Password: <input type="password" placeholder="Enter password" name="password" minlength="6" maxlength="16" required><br>
 	<input type="submit" name="login"></button><br>
+	<p>New? <a href="register.php">Create account</a></p>
 	</form>
 </body>
 </html>
