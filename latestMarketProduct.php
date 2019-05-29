@@ -13,37 +13,16 @@ function curlProductUrl($url) {
 function displayTopFive() {
 echo "<h1><u>Top Five Most Visited (Market Place)</u></h1>";
 $cookie = unserialize($_COOKIE['mostVisitedProducts']);
-/*Sort cookie array in descending order from highest counts then slice first five indexes (top five products) and loop through each product to render*/
-	arsort($cookie);
-	$topFive = array_slice($cookie,0,5);
-	foreach($topFive as $key => $val) {
-		echo '<img src="'.$key.'"height="200" width="300"/>'.$val;
-	}
+/*verify cookie is an array, sort the array in descending order from highest counts
+then slice first five indexes (top five products) and display each one in a loop*/
+		 if (is_array($cookie)) {
+			 arsort($cookie);
+			 $topFive = array_slice($cookie,0,5);
+				foreach($topFive as $key => $val) {
+					 echo '<img src="'.$key.'"height="200" width="300"/>'.$val;
+				}
+		 }
 }
-
-//top five (market place) query:
-$topFiveMarket = mysqli_query($conn, "SELECT p_img, COUNT(p_views) AS visits FROM test_market GROUP BY p_img ORDER BY visits DESC LIMIT 5");
-
-	while($row = mysqli_fetch_assoc($topFiveMarket)) {
-		echo $row['img'];
-	}
-
-/*
-//database table schema: 
-$product = "CREATE TABLE IF NOT EXISTS p_market (id int(8) NOT NULL PRIMARY KEY, p_category VARCHAR(50), p_name VARCHAR(50), p_views int(11) NOT NULL, p_img LONGBLOB NOT NULL)";
-
-//top five (market place) query:
-$topFiveMarket = mysqli_query($conn, "SELECT p_img, COUNT(p_views) AS visits FROM p_market GROUP BY p_img ORDER BY visits DESC LIMIT 5");
-
-if($topFive = mysqli_fetch_assoc($topFiveMarket)) {
-		while($row = mysqli_fetch_assoc($topFive)) {
-				echo $row['img'];
-		}
-}
-
-//top five (subdomain) query:
-$topFiveSub = mysqli_query($conn, "SELECT p_img, COUNT(p_views) AS visits FROM p_market WHERE p_category = ? GROUP BY p_img ORDER BY visits DESC LIMIT 5");
-*/
 
 $brewgy = array('http://brewgy.com/brewgyX.php'=>'images/droneImages/drone0.jpg', 
 			  'http://brewgy.com/brewgyXI.php' => 'images/droneImages/drone1.jpg', 
@@ -57,7 +36,8 @@ $brewgy = array('http://brewgy.com/brewgyX.php'=>'images/droneImages/drone0.jpg'
 			  'http://brewgy.com/brewgyXVIX.php' => 'images/droneImages/drone9.jpg'
 			  );
 
-displayTopFive(); echo "<br>";
+displayTopFive();
+echo "<br>";
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +66,7 @@ displayTopFive(); echo "<br>";
    	<div class="grid-container">
    		<?php foreach($brewgy as $key => $value) { ?>
    		<div class="grid-item">
-  		<a href='<?php echo curlProductUrl($key);?>?id=<?php echo $row['id']; ?>' target="_blank"><img src="<?php echo $value; ?>" height="200" width="300"></a>
+  		<a href='<?php echo curlProductUrl($key);?>' target="_blank"><img src="<?php echo $value; ?>" height="200" width="300"></a>
   		</div>
   		<?php } ?>
    	</div>
